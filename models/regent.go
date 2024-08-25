@@ -48,7 +48,7 @@ func (r Regent) GetRegents(db *sql.DB) ([]Regent, error) {
 }
 
 func (r *Regent) GetRegent(db *sql.DB, id int) (*Regent, error) {
-	row := db.QueryRow("SELECT * FROM regent WHERE idregent = ?", id)
+	row := db.QueryRow("SELECT idregent, name, capital, area FROM regent WHERE idregent = ?", id)
 	if row == nil {
 		return nil, sql.ErrNoRows
 	}
