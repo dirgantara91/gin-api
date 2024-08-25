@@ -1,0 +1,58 @@
+definitions:
+  main.Regent:
+    properties:
+      area:
+        type: string
+      capital:
+        type: string
+      idregent:
+        type: integer
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /regent:
+    get:
+      description: get all Regents
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Regent'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            type: object
+      summary: Get all Regents
+      tags:
+      - Regents
+  /regent/{idregent}:
+    get:
+      description: get regent by idregent
+      parameters:
+      - description: idregent
+        in: path
+        name: idregent
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Regent'
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            type: object
+      summary: Get one regent
+      tags:
+      - Regents
+swagger: "2.0"
